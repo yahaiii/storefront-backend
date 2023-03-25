@@ -3,8 +3,8 @@
       "driver": "pg",
       "host": "127.0.0.1",
       "database": "storefront-backend",
-      "user": "postgres",
-      "password": ""
+      "user": "storefront_user",
+      "password": "P@55word"
     },
     "test": {
       "driver": "pg",
