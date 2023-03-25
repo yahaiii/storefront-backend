@@ -43,3 +43,27 @@ Note: The endpoints for the optional features ("Top 5 most popular products", "P
 
 Note: The category is not included in this Product Data Shape, as it is marked as optional and not required.
 
+
+## Database Design
+#### Table: products
+- id: SERIAL (primary key)
+- name: VARCHAR(255)
+- price: DECIMAL(10,2)
+
+#### Table: users
+- id: SERIAL (primary key)
+- first_name: VARCHAR(255)
+- last_name: VARCHAR(255)
+- password: VARCHAR(255)
+
+#### Table: orders
+- id: SERIAL (primary key)
+- user_id: INTEGER (foreign key to users table)
+- status: VARCHAR(20)
+
+#### Table: order_items
+- id: SERIAL (primary key)
+- order_id: INTEGER (foreign key to orders table)
+- product_id: INTEGER (foreign key to products table)
+- quantity: INTEGER
+
