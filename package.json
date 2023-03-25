@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "node src/server.ts",
+    "start": "ts-node src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
     "test": "jasmine-ts",
     "tsc": "tsc"
@@ -14,6 +14,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "pg": "^8.10.0",
@@ -26,7 +27,7 @@
     "jasmine": "^3.6.4",
     "jasmine-spec-reporter": "^6.0.0",
     "jasmine-ts": "^0.3.0",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.9.1",
     "tsc-watch": "^4.2.9"
   }
 }
