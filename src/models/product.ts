@@ -7,7 +7,6 @@ export class ProductStore {
         try {
 
             const conn = await db.connect();
-
             const sql = 'SELECT * FROM products';
 
             const { rows } = await conn.query(sql);
@@ -32,7 +31,6 @@ export class ProductStore {
             const conn = await db.connect();
 
             const sql = 'SELECT * FROM products WHERE id = $1';
-
             const { rows } = await conn.query(sql, [id]);
 
             conn.release();
@@ -52,7 +50,6 @@ export class ProductStore {
             const conn = await db.connect();
 
             const sql = 'INSERT INTO products (name, price) VALUES ($1, $2) RETURNING *';
-
             const { rows } = await conn.query(sql, [product.name, product.price]);
 
             conn.release();
@@ -73,7 +70,6 @@ export class ProductStore {
             const conn = await db.connect();
 
             const sql = 'UPDATE products SET name = $1, price = $2 WHERE id = $3 RETURNING *';
-
             const { rows } = await conn.query(sql, [product.id, product.name, product.price]);
 
             conn.release();
@@ -92,7 +88,6 @@ export class ProductStore {
         try {
             
             const conn = await db.connect();
-
             const sql = 'DELETE FROM products WHERE id = $1 RETURNING *';
 
             const { rows } = await conn.query(sql, [id]);

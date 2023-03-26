@@ -7,14 +7,30 @@ const {
     POSTGRES_HOST,
     POSTGRES_DB,
     POSTGRES_USER,
-    POSTGRES_PASSWORD
-} = process.env
+    POSTGRES_PASSWORD,
+    POSTGRES_TEST_DB,
+    ENV
+} = process.env;
 
-const db = new Pool({
-    host: POSTGRES_HOST,
-    database: POSTGRES_DB,
-    user: POSTGRES_USER,
-    password: POSTGRES_PASSWORD
-})
+let db: Pool;
+console.log(ENV);
 
-export default db
+if (ENV === 'test') {
+    db = new Pool({
+        host: POSTGRES_HOST,
+        database: POSTGRES_TEST_DB,
+        user: POSTGRES_USER,
+        password: POSTGRES_PASSWORD
+    });
+} else if (ENV === 'dev') {
+    db = new Pool({
+        host: POSTGRES_HOST,
+        database: POSTGRES_DB,
+        user: POSTGRES_USER,
+        password: POSTGRES_PASSWORD
+    });
+} else {
+    throw new Error(`Invalid ENV value: ${ENV}`);
+}
+
+export default db;
