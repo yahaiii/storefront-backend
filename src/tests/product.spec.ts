@@ -26,7 +26,7 @@ describe("ProductStore", () => {
 
   describe("createProduct", () => {
     it("should create a new product", async () => {
-      const newProduct = await productStore.createProduct({name: "test product", price: 20});
+      const newProduct = await productStore.createProduct({id: 1, name: "test product", price: 20});
       expect(newProduct.name).toEqual("test product");
       expect(newProduct.price).toEqual(20);
     });
@@ -41,7 +41,7 @@ describe("ProductStore", () => {
 
   describe("getProductById", () => {
     it("should return the specified product", async () => {
-        const newProduct = await productStore.createProduct({name: "test product", price: 20}) as Product;
+        const newProduct = await productStore.createProduct({id: 2, name: "test product", price: 20}) as Product;
         const product = await productStore.getProductById(newProduct.id as number);        
       expect(product.name).toEqual("test product");
       expect(product.price).toEqual(20);
@@ -50,7 +50,7 @@ describe("ProductStore", () => {
 
   describe("updateProduct", () => {
     it("should update the specified product", async () => {
-      const newProduct = await productStore.createProduct({name: "test product", price: 20});
+      const newProduct = await productStore.createProduct({id: 3, name: "test product", price: 20});
       const updatedProduct = await productStore.updateProduct({...newProduct, price: 30});
       expect(updatedProduct.name).toEqual("test product");
       expect(updatedProduct.price).toEqual(30);
@@ -59,7 +59,7 @@ describe("ProductStore", () => {
 
   describe("deleteProduct", () => {
     it("should delete the specified product", async () => {
-      const newProduct = await productStore.createProduct({name: "test product", price: 20});
+      const newProduct = await productStore.createProduct({id: 4, name: "test product", price: 20});
       await productStore.deleteProduct(newProduct.id as number);
       const product = await productStore.getProductById(newProduct.id as number);
       expect(product).toBeUndefined();
